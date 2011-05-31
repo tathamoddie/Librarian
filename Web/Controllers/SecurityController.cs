@@ -29,7 +29,7 @@ namespace Librarian.Web.Controllers
             if (!ModelState.IsValid)
                 return View(credentials);
 
-            var isLoginValid = securityService.Authenticate(credentials);
+            var isLoginValid = securityService.Authenticate(credentials, Response);
 
             if (isLoginValid)
             {

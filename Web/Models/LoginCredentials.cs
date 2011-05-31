@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Specialized;
+using System.ComponentModel.DataAnnotations;
 
 namespace Librarian.Web.Models
 {
@@ -12,5 +13,14 @@ namespace Librarian.Web.Models
         [Required]
         [StringLength(32, MinimumLength = 32, ErrorMessage = "The API Key must be 32 hexadecimal characters.")]
         public string ApiKey { get; set; }
+
+        public NameValueCollection ToNameValueCollection()
+        {
+            return new NameValueCollection
+            {
+                { "InstanceUri", InstanceUri },
+                { "ApiKey", ApiKey },
+            };
+        }
     }
 }

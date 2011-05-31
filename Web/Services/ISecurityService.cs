@@ -1,9 +1,10 @@
-﻿using Librarian.Web.Models;
+﻿using System.Web;
+using Librarian.Web.Models;
 
 namespace Librarian.Web.Services
 {
     public interface ISecurityService
     {
-        bool Authenticate(LoginCredentials credentials);
+        bool Authenticate(LoginCredentials credentials, HttpResponseBase response);
     }
 }
