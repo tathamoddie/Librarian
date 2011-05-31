@@ -1,5 +1,23 @@
-﻿@{
+﻿@model Librarian.Web.Models.LoginCredentials
+
+@{
     ViewBag.Title = "Login";
 }
 
 <h2>Login</h2>
+@using (Html.BeginForm())
+{
+    <ul>
+        <li>
+            @Html.LabelFor(m => m.InstanceUri)
+            @Html.EditorFor(m => m.InstanceUri)
+            @Html.ValidationMessageFor(m => m.InstanceUri)
+        </li>
+        <li>
+            @Html.LabelFor(m => m.ApiKey)
+            @Html.EditorFor(m => m.ApiKey)
+            @Html.ValidationMessageFor(m => m.ApiKey)
+        </li>
+    </ul>
+    <input type="submit" value="Login" />
+}
