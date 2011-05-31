@@ -9,6 +9,15 @@
 </head>
 
 <body>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.RouteLink("Logout", RouteNames.Logout);
+    }
+    else
+    {
+        @Html.RouteLink("Login", RouteNames.Login);
+    }
+
     @RenderBody()
 </body>
 </html>
