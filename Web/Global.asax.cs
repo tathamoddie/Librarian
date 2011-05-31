@@ -19,6 +19,7 @@ namespace Librarian.Web
 
             routes.MapRoute(RouteNames.Home, "", new { controller = "Home", action = "Index" } );
             routes.MapRoute(RouteNames.Login, "login", new { controller = "Security", action = "Login" });
+            routes.MapRoute(RouteNames.Logout, "logout", new { controller = "Security", action = "Logout" });
             routes.MapRoute(RouteNames.ListProjects, "projects", new { controller = "Project", action = "ListProjects" });
         }
 

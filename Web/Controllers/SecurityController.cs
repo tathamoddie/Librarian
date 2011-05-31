@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.Security;
 using Librarian.Web.Models;
 using Librarian.Web.Services;
 
@@ -40,6 +41,12 @@ namespace Librarian.Web.Controllers
 
             ModelState.AddModelError("login-failed", "The login failed.");
             return View(credentials);
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToRoute(RouteNames.Home);
         }
     }
 }
