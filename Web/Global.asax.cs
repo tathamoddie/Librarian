@@ -17,18 +17,8 @@ namespace Librarian.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "Login",
-                "login",
-                new { controller = "Security", action = "Login" }
-            );
-
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
-
+            routes.MapRoute(RouteNames.Home, "", new { controller = "Home", action = "Index" } );
+            routes.MapRoute(RouteNames.Login, "login", new { controller = "Security", action = "Login" });
         }
 
         protected void Application_Start()
