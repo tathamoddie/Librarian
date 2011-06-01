@@ -12,6 +12,7 @@
         {
             <li class="story-color-@story.ColorKey">
                 <span class="story-id">#@story.Id</span>
+                <span class="estimated-effort @(story.EstimatedEffort.HasValue ? "" : "unestimated")">@(story.EstimatedEffort.HasValue ? story.EstimatedEffort.ToString() : "?")</span>
                 <div>
                     <span>@story.Name</span>
                     <span class="description">@story.Description</span>

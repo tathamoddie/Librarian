@@ -81,6 +81,7 @@ namespace Librarian.Logic.TinyPM
                     Position = int.Parse(u.Element("position").Value),
                     Name = u.Element("name").Value,
                     Description = u.Element("description").Value,
+                    EstimatedEffort = u.Element("estimatedEffort") == null ? null : (double?)double.Parse(u.Element("estimatedEffort").Value),
                     ColorKey = u.Element("color").Value
                 });
         }
