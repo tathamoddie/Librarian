@@ -1,0 +1,3 @@
+tinyPM doesn't have a great interface for bulk story management. This makes it harder than I'd like to deal with a backlog of any reasonable size.
+
+I wanted to be able to see more data on the screen at once and do things like repositioning entire groups of user stories in one go and assigning colors without having to navigate away. This is what Librarian will do. (Eventually.)
