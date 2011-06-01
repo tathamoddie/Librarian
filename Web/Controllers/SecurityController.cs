@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using Librarian.Web.Models;
+using Librarian.Logic.TinyPM;
 using Librarian.Web.Services;
 
 namespace Librarian.Web.Controllers
@@ -21,11 +21,11 @@ namespace Librarian.Web.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View(new LoginCredentials());
+            return View(new ApiCredential());
         }
 
         [HttpPost]
-        public ActionResult Login(LoginCredentials credentials, string returnUrl)
+        public ActionResult Login(ApiCredential credentials, string returnUrl)
         {
             if (!ModelState.IsValid)
                 return View(credentials);

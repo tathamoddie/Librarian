@@ -1,13 +1,13 @@
 ﻿using System.Web;
 using System.Web.Security;
 using FormsAuthenticationExtensions;
-using Librarian.Web.Models;
+using Librarian.Logic.TinyPM;
 
 namespace Librarian.Web.Services
 {
     public class SecurityService : ISecurityService
     {
-        public bool Authenticate(LoginCredentials credentials, HttpResponseBase response)
+        public bool Authenticate(ApiCredential credentials, HttpResponseBase response)
         {
             var userData = credentials.ToNameValueCollection();
             new FormsAuthentication().SetAuthCookie(response, "tinyPM User", true, userData);

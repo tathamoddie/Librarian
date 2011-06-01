@@ -1,9 +1,9 @@
 ﻿using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 
-namespace Librarian.Web.Models
+namespace Librarian.Logic.TinyPM
 {
-    public class LoginCredentials
+    public class ApiCredential
     {
         [Display(Name = "tinyPM Instance URI")]
         [Required]
@@ -20,6 +20,15 @@ namespace Librarian.Web.Models
             {
                 { "InstanceUri", InstanceUri },
                 { "ApiKey", ApiKey },
+            };
+        }
+
+        public static ApiCredential FromNameValueCollection(NameValueCollection data)
+        {
+            return new ApiCredential
+            {
+                InstanceUri = data["InstanceUri"],
+                ApiKey = data["ApiKey"],
             };
         }
     }

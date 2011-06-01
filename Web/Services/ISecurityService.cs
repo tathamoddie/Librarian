@@ -1,10 +1,10 @@
 ﻿using System.Web;
-using Librarian.Web.Models;
+using Librarian.Logic.TinyPM;
 
 namespace Librarian.Web.Services
 {
     public interface ISecurityService
     {
-        bool Authenticate(LoginCredentials credentials, HttpResponseBase response);
+        bool Authenticate(ApiCredential credentials, HttpResponseBase response);
     }
 }
