@@ -80,6 +80,7 @@ namespace Librarian.Logic.TinyPM
                     Id = int.Parse(u.Element("id").Value),
                     Position = int.Parse(u.Element("position").Value),
                     Name = u.Element("name").Value,
+                    Description = u.Element("description").Value,
                     ColorKey = u.Element("color").Value
                 });
         }

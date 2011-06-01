@@ -87,6 +87,7 @@ ol.backlog
         width: 100%;
         height: 3em;
         overflow: hidden;
+        position: relative;
     }
 
     ol.backlog li:hover
@@ -98,12 +99,13 @@ ol.backlog
         ol.backlog li .story-id,
         ol.backlog li div
         {
-            display: block;
-            float: left;
+            position: absolute;
+            top: 0;
         }
 
         ol.backlog li .story-id
         {
+            left: 0;
             background-color: #eee;
             border-right: dotted 1px #999;
             width: 4em;
@@ -128,6 +130,7 @@ ol.backlog
         {
             padding: 0.25em 0.5em;
             height: 2.5em;
+            left: 5em;
         }
 
         ol.backlog li div span
@@ -135,9 +138,17 @@ ol.backlog
             display: block;
         }
 
-        ol.backlog li div .metadata
+        ol.backlog li div .description
         {
-            color: #090;
-            padding-top: 0.25em;
+            color: #aaa;
             font-size: 80%;
+            width: 100%;
+            height: 1.3em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        ol.backlog li:hover div .description
+        {
+            color: #000;
         }
