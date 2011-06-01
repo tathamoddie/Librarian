@@ -9,10 +9,6 @@ namespace Librarian.Web.Controllers
     {
         readonly ISecurityService securityService;
 
-        public SecurityController()
-            : this(new SecurityService())
-        {}
-
         public SecurityController(ISecurityService securityService)
         {
             this.securityService = securityService;

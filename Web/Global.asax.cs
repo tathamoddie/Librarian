@@ -29,6 +29,7 @@ namespace Librarian.Web
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterAssemblyTypes(typeof (MvcApplication).Assembly).AsImplementedInterfaces();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
