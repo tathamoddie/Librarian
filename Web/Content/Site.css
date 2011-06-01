@@ -114,6 +114,13 @@ ol.backlog
             text-align: center;
         }
 
+        ol.backlog li.story-color-WHITE .story-id  { background-color: #f9f9f9; }
+        ol.backlog li.story-color-YELLOW .story-id { background-color: #fff1b9; }
+        ol.backlog li.story-color-ORANGE .story-id { background-color: #ffc68c; }
+        ol.backlog li.story-color-RED .story-id    { background-color: #ffc4b9; }
+        ol.backlog li.story-color-GREEN .story-id  { background-color: #dbffb7; }
+        ol.backlog li.story-color-BLUE .story-id   { background-color: #c6d7e8; }
+
         ol.backlog li div
         {
             padding: 0.25em 0.5em;

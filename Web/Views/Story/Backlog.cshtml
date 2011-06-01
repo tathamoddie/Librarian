@@ -10,7 +10,7 @@
     <ol class="backlog">
         @foreach (var story in Model)
         {
-            <li>
+            <li class="story-color-@story.ColorKey">
                 <span class="story-id">#@story.Id</span>
                 <div>
                     <span>@story.Name</span>
