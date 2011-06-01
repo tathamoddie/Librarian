@@ -125,7 +125,7 @@ ol.backlog
             display: block;
         }
 
-        ol.backlog li div .tags
+        ol.backlog li div .metadata
         {
             color: #090;
             padding-top: 0.25em;
