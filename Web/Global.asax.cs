@@ -25,6 +25,9 @@ namespace Librarian.Web
             routes.MapRoute(RouteNames.Login, "login", new { controller = "Security", action = "Login" });
             routes.MapRoute(RouteNames.Logout, "logout", new { controller = "Security", action = "Logout" });
             routes.MapRoute(RouteNames.ListProjects, "projects", new { controller = "Project", action = "ListProjects" });
+            routes.MapRoute(RouteNames.Backlog,
+                "projects/{projectId}/backlog",
+                new { controller = "Story", action = "Backlog" });
         }
 
         protected void Application_Start()

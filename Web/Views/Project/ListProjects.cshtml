@@ -10,7 +10,7 @@
     <ul>
         @foreach (var project in Model)
         {
-            <li>@project.Name</li>
+            <li>@Html.RouteLink(project.Name, RouteNames.Backlog, new { projectId = project.Id })</li>
         }
     </ul>
 }
