@@ -57,7 +57,7 @@ namespace Librarian.Logic.TinyPM
         public IEnumerable<UserStory> GetBacklog(int projectId)
         {
             return ExecuteRequest(
-                string.Format("project/{0}/userstories", projectId),
+                string.Format("project/{0}/userstories?status=PENDING", projectId),
                 _ => _
                     .Elements("userStory")
                     .Select(p => new UserStory
