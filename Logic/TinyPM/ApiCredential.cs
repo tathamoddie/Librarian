@@ -5,13 +5,13 @@ namespace Librarian.Logic.TinyPM
 {
     public class ApiCredential
     {
-        [Display(Name = "tinyPM Instance URI")]
+        [Display(Name = "Application base URL")]
         [Required]
         public string InstanceUri { get; set; }
 
-        [Display(Name = "API Key")]
+        [Display(Name = "Authentication token")]
         [Required]
-        [StringLength(32, MinimumLength = 32, ErrorMessage = "The API Key must be 32 hexadecimal characters.")]
+        [StringLength(32, MinimumLength = 32, ErrorMessage = "The authentication token must be 32 hexadecimal characters.")]
         public string ApiKey { get; set; }
 
         public NameValueCollection ToNameValueCollection()
