@@ -24,6 +24,7 @@ namespace Librarian.Web.Controllers
         [HttpPost]
         public ActionResult SetColor(int storyId, string color)
         {
+            apiClient.SetUserStoryColor(storyId, color);
             return new HttpStatusCodeResult((int) HttpStatusCode.OK);
         }
     }

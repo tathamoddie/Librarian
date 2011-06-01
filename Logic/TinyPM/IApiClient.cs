@@ -7,5 +7,6 @@ namespace Librarian.Logic.TinyPM
         bool Ping();
         IEnumerable<Project> GetAllProjects();
         IEnumerable<UserStory> GetBacklog(int projectId);
+        void SetUserStoryColor(int storyId, string color);
     }
 }

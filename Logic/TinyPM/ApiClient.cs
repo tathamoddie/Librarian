@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Librarian.Logic.TinyPM
@@ -73,6 +75,16 @@ namespace Librarian.Logic.TinyPM
                 .ToArray();
         }
 
+        public void SetUserStoryColor(int storyId, string color)
+        {
+            ExecutePut(
+                string.Format("userstory/{0}", storyId),
+                x =>
+                {
+                    x.Element("color").Value = color.ToUpperInvariant();
+                });
+        }
+
         UserStory GetUserStory(int userStoryId)
         {
             return ExecuteRequest(
@@ -94,8 +106,43 @@ namespace Librarian.Logic.TinyPM
             using (var response = (HttpWebResponse)request.GetResponse())
             using (var responseStream = response.GetResponseStream())
             {
-                return ParseResponse(responseStream, parseCallback);
+                var xmlData = XElement.Load(responseStream);
+                return parseCallback(xmlData);
             }
+        }
+
+        void ExecutePut(string path, Action<XElement> modifierCallback)
+        {
+            XElement templateData;
+            var templateRequest = BuildRequest(path);
+            using (var templateResponse = (HttpWebResponse)templateRequest.GetResponse())
+            using (var templateResponseStream = templateResponse.GetResponseStream())
+            {
+                templateData = XElement.Load(templateResponseStream);
+            }
+
+            modifierCallback(templateData);
+
+            string updateString;
+            using (var updateStringWriter = new StringWriter())
+            using (var updateXmlWriter = new XmlTextWriter(updateStringWriter))
+            {
+                templateData.WriteTo(updateXmlWriter);
+
+                updateString = updateStringWriter.ToString();
+            }
+
+            var updateRequest = BuildRequest(path);
+            updateRequest.Method = "PUT";
+            updateRequest.ContentType = MediaTypeNames.Text.Xml;
+            updateRequest.ContentLength = updateString.Length;
+            using (var updateRequestStream = updateRequest.GetRequestStream())
+            using (var updateRequestStreamWriter = new StreamWriter(updateRequestStream))
+            {
+                updateRequestStreamWriter.Write(updateString);
+            }
+
+            using (updateRequest.GetResponse()) {}
         }
 
         HttpWebRequest BuildRequest(string path)
@@ -104,12 +151,6 @@ namespace Librarian.Logic.TinyPM
             var request = (HttpWebRequest)WebRequest.CreateDefault(requestUri);
             request.Headers.Add("X-tinyPM-token", credential.ApiKey);
             return request;
-        }
-
-        static T ParseResponse<T>(Stream stream, Func<XElement, T> parseCallback)
-        {
-            var xmlData = XElement.Load(stream);
-            return parseCallback(xmlData);
         }
     }
 }
