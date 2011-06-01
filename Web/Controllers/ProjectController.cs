@@ -15,7 +15,8 @@ namespace Librarian.Web.Controllers
         [Authorize]
         public ActionResult ListProjects()
         {
-            return View();
+            var projects = apiClient.GetAllProjects();
+            return View(projects);
         }
     }
 }

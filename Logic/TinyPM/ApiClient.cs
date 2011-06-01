@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 
 namespace Librarian.Logic.TinyPM
@@ -26,7 +28,7 @@ namespace Librarian.Logic.TinyPM
         {
             try
             {
-                ExecuteRequest("projects");
+                GetAllProjects();
                 return true;
             }
             catch (WebException)
@@ -35,14 +37,32 @@ namespace Librarian.Logic.TinyPM
             }
         }
 
-        void ExecuteRequest(string path)
+        public IEnumerable<Project> GetAllProjects()
+        {
+            return RetrieveSet<Project>("projects");
+        }
+
+        IEnumerable<T> RetrieveSet<T>(string path)
+        {
+            var request = BuildRequest(path);
+            using (var response = (HttpWebResponse)request.GetResponse())
+            using (var responseStream = response.GetResponseStream())
+            {
+                return ParseSet<T>(responseStream);
+            }
+        }
+
+        HttpWebRequest BuildRequest(string path)
         {
             var requestUri = new Uri(baseUri, path);
             var request = (HttpWebRequest)WebRequest.CreateDefault(requestUri);
-
             request.Headers.Add("X-tinyPM-token", credential.ApiKey);
+            return request;
+        }
 
-            request.GetResponse();
+        static IEnumerable<T> ParseSet<T>(Stream stream)
+        {
+            return Enumerable.Empty<T>();
         }
     }
 }

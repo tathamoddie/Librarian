@@ -1,7 +1,10 @@
-﻿namespace Librarian.Logic.TinyPM
+﻿using System.Collections.Generic;
+
+namespace Librarian.Logic.TinyPM
 {
     public interface IApiClient
     {
         bool Ping();
+        IEnumerable<Project> GetAllProjects();
     }
 }

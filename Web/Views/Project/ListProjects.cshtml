@@ -1,5 +1,20 @@
-﻿@{
+﻿@model IEnumerable<Librarian.Logic.TinyPM.Project>
+
+@{
     ViewBag.Title = "ListProjects";
 }
 
-<h2>ListProjects</h2>
+<h2>Projects</h2>
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var project in Model)
+        {
+            <li>@project.Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No projects found.</p>
+}
