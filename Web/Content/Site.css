@@ -87,7 +87,6 @@ ol.backlog
         width: 100%;
         height: 3em;
         overflow: hidden;
-        cursor: move;
     }
 
     ol.backlog li:hover
@@ -113,6 +112,7 @@ ol.backlog
             line-height: 2em;
             vertical-align: middle;
             text-align: center;
+            cursor: move;
         }
 
         ol.backlog li:hover .story-id { border-right-style: solid; }
