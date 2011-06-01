@@ -44,12 +44,13 @@ namespace Librarian.Logic.TinyPM
                 "projects",
                 _ => _
                     .Elements("project")
-                    .Select(project => new Project
+                    .Select(p => new Project
                     {
-                        Id = int.Parse(project.Element("id").Value),
-                        Name = project.Element("name").Value,
-                        Code = project.Element("code").Value
-                    }));
+                        Id = int.Parse(p.Element("id").Value),
+                        Name = p.Element("name").Value,
+                        Code = p.Element("code").Value
+                    })
+                    .OrderBy(p => p.Name));
         }
 
         T ExecuteRequest<T>(string path, Func<XElement, T> parseCallback)
