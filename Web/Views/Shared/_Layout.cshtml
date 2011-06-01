@@ -9,15 +9,17 @@
         <header>
             <h1><a href="@Url.RouteUrl(RouteNames.Home)">Librarian <span>(home)</span></a></h1>
             <nav>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    @Html.RouteLink("Projects", RouteNames.ListProjects);
-                    @Html.RouteLink("Logout", RouteNames.Logout);
-                }
-                else
-                {
-                    @Html.RouteLink("Login", RouteNames.Login);
-                }
+                <ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.RouteLink("Projects", RouteNames.ListProjects)</li>
+                        <li>@Html.RouteLink("Logout", RouteNames.Logout)</li>
+                    }
+                    else
+                    {
+                        <li>@Html.RouteLink("Login", RouteNames.Login)</li>
+                    }
+                </ul>
             </nav>
         </header>
 

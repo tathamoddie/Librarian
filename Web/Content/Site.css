@@ -47,6 +47,21 @@ header
         margin-right: 15px;
     }
 
+        header nav ul
+        {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            float: left;
+        }
+
+        header nav ul li
+        {
+            margin: 0 0 0 15px;
+            padding: 0;
+            float: left;
+        }
+
     header a:link,
     header a:active,
     header a:visited
