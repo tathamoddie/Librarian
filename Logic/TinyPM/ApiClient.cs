@@ -50,7 +50,23 @@ namespace Librarian.Logic.TinyPM
                         Name = p.Element("name").Value,
                         Code = p.Element("code").Value
                     })
-                    .OrderBy(p => p.Name));
+                    .OrderBy(p => p.Name)
+                    .ToArray());
+        }
+
+        public IEnumerable<UserStory> GetBacklog(int projectId)
+        {
+            return ExecuteRequest(
+                string.Format("project/{0}/userstories", projectId),
+                _ => _
+                    .Elements("userStory")
+                    .Select(p => new UserStory
+                    {
+                        Id = int.Parse(p.Element("id").Value),
+                        Name = p.Element("name").Value
+                    })
+                    .OrderBy(p => p.Name)
+                    .ToArray());
         }
 
         T ExecuteRequest<T>(string path, Func<XElement, T> parseCallback)
@@ -59,7 +75,7 @@ namespace Librarian.Logic.TinyPM
             using (var response = (HttpWebResponse)request.GetResponse())
             using (var responseStream = response.GetResponseStream())
             {
-                return ParseResponse<T>(responseStream, parseCallback);
+                return ParseResponse(responseStream, parseCallback);
             }
         }
 

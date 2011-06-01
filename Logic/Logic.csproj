@@ -47,6 +47,7 @@
     <Compile Include="TinyPM\IApiClient.cs" />
     <Compile Include="TinyPM\IApiCredentialProvider.cs" />
     <Compile Include="TinyPM\Project.cs" />
+    <Compile Include="TinyPM\UserStory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

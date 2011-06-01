@@ -1,5 +1,20 @@
-﻿@{
+﻿@model IEnumerable<Librarian.Logic.TinyPM.UserStory>
+
+@{
     ViewBag.Title = "Backlog";
 }
 
 <h2>Backlog</h2>
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var story in Model)
+        {
+            <li>@story.Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No stories found.</p>
+}
