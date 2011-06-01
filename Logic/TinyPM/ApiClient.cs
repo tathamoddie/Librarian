@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Xml.Linq;
 
 namespace Librarian.Logic.TinyPM
 {
@@ -39,16 +40,25 @@ namespace Librarian.Logic.TinyPM
 
         public IEnumerable<Project> GetAllProjects()
         {
-            return RetrieveSet<Project>("projects");
+            return ExecuteRequest(
+                "projects",
+                _ => _
+                    .Elements("project")
+                    .Select(project => new Project
+                    {
+                        Id = int.Parse(project.Element("id").Value),
+                        Name = project.Element("name").Value,
+                        Code = project.Element("code").Value
+                    }));
         }
 
-        IEnumerable<T> RetrieveSet<T>(string path)
+        T ExecuteRequest<T>(string path, Func<XElement, T> parseCallback)
         {
             var request = BuildRequest(path);
             using (var response = (HttpWebResponse)request.GetResponse())
             using (var responseStream = response.GetResponseStream())
             {
-                return ParseSet<T>(responseStream);
+                return ParseResponse<T>(responseStream, parseCallback);
             }
         }
 
@@ -60,9 +70,10 @@ namespace Librarian.Logic.TinyPM
             return request;
         }
 
-        static IEnumerable<T> ParseSet<T>(Stream stream)
+        static T ParseResponse<T>(Stream stream, Func<XElement, T> parseCallback)
         {
-            return Enumerable.Empty<T>();
+            var xmlData = XElement.Load(stream);
+            return parseCallback(xmlData);
         }
     }
 }
