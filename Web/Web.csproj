@@ -13,7 +13,7 @@
     <RootNamespace>Librarian.Web</RootNamespace>
     <AssemblyName>Librarian.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <MvcBuildViews>true</MvcBuildViews>
+    <MvcBuildViews>false</MvcBuildViews>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
