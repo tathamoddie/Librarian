@@ -10,7 +10,7 @@
     <ol class="backlog">
         @foreach (var story in Model)
         {
-            <li class="story-color-@story.ColorKey">
+            <li class="story-color-@story.ColorKey" data-story-id="@story.Id">
                 <span class="story-id">#@story.Id</span>
                 <span class="estimated-effort @(story.EstimatedEffort.HasValue ? "" : "unestimated")">@(story.EstimatedEffort.HasValue ? story.EstimatedEffort.ToString() : "?")</span>
                 <div>
