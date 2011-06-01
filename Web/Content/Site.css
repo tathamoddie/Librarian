@@ -78,7 +78,17 @@ header
 .content-holder
 {
     padding: 15px;
+    min-height: 600px;
 }
+
+footer{    display: block;    margin: 20px 0 10px 0;    font-size: 11px;    color: #bbb;    text-align: center;    text-transform: uppercase;}    footer a:link,
+    footer a:active,
+    footer a:visited { color: #bbb; }
+
+    footer:hover,
+    footer:hover a:link,
+    footer:hover a:active,
+    footer:hover a:visited { color: #777; }
 
 h2 { margin-top: 0; }
 
