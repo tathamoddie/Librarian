@@ -6,6 +6,6 @@ namespace Librarian.Logic.TinyPM
     {
         bool Ping();
         IEnumerable<Project> GetAllProjects();
-        IEnumerable<UserStoryHeader> GetBacklog(int projectId);
+        IEnumerable<UserStory> GetBacklog(int projectId);
     }
 }

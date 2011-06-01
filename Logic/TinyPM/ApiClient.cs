@@ -54,29 +54,20 @@ namespace Librarian.Logic.TinyPM
                     .ToArray());
         }
 
-        public IEnumerable<UserStoryHeader> GetBacklog(int projectId)
+        public IEnumerable<UserStory> GetBacklog(int projectId)
         {
-            var stories = ExecuteRequest(
+            var storyIds = ExecuteRequest(
                 string.Format("project/{0}/userstories?status=PENDING", projectId),
                 _ => _
                     .Elements("userStory")
-                    .Select(p => new UserStoryHeader
-                    {
-                        Id = int.Parse(p.Element("id").Value),
-                        Name = p.Element("name").Value
-                    })
+                    .Select(p => int.Parse(p.Element("id").Value))
                     .ToArray());
 
-            return stories
+            return storyIds
                 .AsParallel()
                 .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
-                .Select(s => new
-                {
-                    Story = s,
-                    GetUserStory(s.Id).Position
-                })
+                .Select(GetUserStory)
                 .OrderBy(s => s.Position)
-                .Select(s => s.Story)
                 .ToArray();
         }
 
