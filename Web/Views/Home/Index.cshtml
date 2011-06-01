@@ -1,6 +1,13 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "";
 }
 
 <h2>Librarian</h2>
-@Html.RouteLink("Start Now", RouteNames.ListProjects)
+<p>
+    tinyPM doesn't have a great interface for dealing with a larger backlog.
+</p>
+<p>
+    I wanted to be able to see more data on the screen, reposition entire groups
+    of user stories at once and assign colors in-place. This is what Librarian is for.
+</p>
+@Html.RouteLink("Get Started", RouteNames.ListProjects)
