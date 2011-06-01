@@ -2,13 +2,22 @@
     ViewBag.Title = "";
 }
 
-<p>
-    tinyPM doesn't have a great interface for bulk story management. This makes it harder
-    than I'd like to deal with a backlog of any reasonable size.
-</p>
-<p>
-    I wanted to be able to see more data on the screen at once and do things like
-    repositioning entire groups of user stories in one go and assigning colors without
-    having to navigate away. This is what Librarian will do. (Eventually.)
-</p>
-@Html.RouteLink("Get Started", RouteNames.ListProjects)
+<div class="welcome-panel">
+    <h2>Hi. I'm here to help organise your stories.</h2>
+    <p>
+        As nice as tinyPM is, its backlog interface is less than ideal for bulk story
+        management. This makes it harder than it should be to deal with a backlog of even
+        a moderate size.
+    </p>
+    <p>
+        I wanted to be able to see more data on the screen at once and do things like
+        repositioning entire groups of user stories in one go and assigning colors without
+        having to navigate away. This is what Librarian will let you do. (Eventually.)
+    </p>
+    <p>
+        For now, performance is less than ideal because the tinyPM API is very chatty. This has
+        <a href="http://tinypm.uservoice.com/forums/3559-tinypm-features/suggestions/1889035-api-should-return-position-as-part-of-the-payload-">been raised</a>
+        with the tinyPM developers. In the mean time, it's still fast enough to be useable.
+    </p>
+    @Html.RouteLink("Get Started", RouteNames.ListProjects)
+</div>
