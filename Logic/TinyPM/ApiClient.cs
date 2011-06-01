@@ -54,19 +54,42 @@ namespace Librarian.Logic.TinyPM
                     .ToArray());
         }
 
-        public IEnumerable<UserStory> GetBacklog(int projectId)
+        public IEnumerable<UserStoryHeader> GetBacklog(int projectId)
         {
-            return ExecuteRequest(
+            var stories = ExecuteRequest(
                 string.Format("project/{0}/userstories?status=PENDING", projectId),
                 _ => _
                     .Elements("userStory")
-                    .Select(p => new UserStory
+                    .Select(p => new UserStoryHeader
                     {
                         Id = int.Parse(p.Element("id").Value),
                         Name = p.Element("name").Value
                     })
-                    .OrderBy(p => p.Name)
                     .ToArray());
+
+            return stories
+                .AsParallel()
+                .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
+                .Select(s => new
+                {
+                    Story = s,
+                    GetUserStory(s.Id).Position
+                })
+                .OrderBy(s => s.Position)
+                .Select(s => s.Story)
+                .ToArray();
+        }
+
+        UserStory GetUserStory(int userStoryId)
+        {
+            return ExecuteRequest(
+                string.Format("userstory/{0}", userStoryId),
+                u => new UserStory
+                {
+                    Id = int.Parse(u.Element("id").Value),
+                    Position = int.Parse(u.Element("position").Value),
+                    Name = u.Element("name").Value
+                });
         }
 
         T ExecuteRequest<T>(string path, Func<XElement, T> parseCallback)

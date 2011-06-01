@@ -1,9 +1,8 @@
 ﻿namespace Librarian.Logic.TinyPM
 {
-    public class UserStory
+    public class UserStoryHeader
     {
         public int Id { get; set; }
-        public int Position { get; set; }
         public string Name { get; set; }
     }
 }
