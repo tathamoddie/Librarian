@@ -20,6 +20,8 @@ namespace Librarian.Logic.TinyPM
         {
             this.credential = credential;
 
+            if (credential == null) return;
+
             var baseUriBuilder = new UriBuilder(this.credential.InstanceUri);
             baseUriBuilder.Path = Path.Combine(baseUriBuilder.Path, "api/");
             baseUri = baseUriBuilder.Uri;
