@@ -93,6 +93,7 @@ ol.backlog
     ol.backlog li:hover
     {
         border-style: solid;
+        background-color: #f0f0f0;
     }
 
         ol.backlog li .story-id,
@@ -113,6 +114,8 @@ ol.backlog
             vertical-align: middle;
             text-align: center;
         }
+
+        ol.backlog li:hover .story-id { border-right-style: solid; }
 
         ol.backlog li.story-color-WHITE .story-id  { background-color: #f9f9f9; }
         ol.backlog li.story-color-YELLOW .story-id { background-color: #fff1b9; }
