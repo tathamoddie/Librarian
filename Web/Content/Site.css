@@ -73,3 +73,61 @@ textarea
 {
     display: none;
 }
+
+ol.backlog
+{
+    list-style-type: none;
+    padding: 0;
+}
+
+    ol.backlog li
+    {
+        border: dotted 1px #999;
+        margin-bottom: 0.25em;
+        width: 100%;
+        height: 3em;
+        overflow: hidden;
+        cursor: move;
+    }
+
+    ol.backlog li:hover
+    {
+        border-style: solid;
+    }
+
+        ol.backlog li .story-id,
+        ol.backlog li div
+        {
+            display: block;
+            float: left;
+        }
+
+        ol.backlog li .story-id
+        {
+            background-color: #eee;
+            border-right: dotted 1px #999;
+            width: 4em;
+            padding: 0.5em;
+            height: 2em;
+            line-height: 2em;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        ol.backlog li div
+        {
+            padding: 0.25em 0.5em;
+            height: 2.5em;
+        }
+
+        ol.backlog li div span
+        {
+            display: block;
+        }
+
+        ol.backlog li div .tags
+        {
+            color: #090;
+            padding-top: 0.25em;
+            font-size: 80%;
+        }

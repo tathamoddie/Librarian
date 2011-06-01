@@ -7,12 +7,18 @@
 <h2>Backlog</h2>
 @if (Model.Any())
 {
-    <ul>
+    <ol class="backlog">
         @foreach (var story in Model)
         {
-            <li>#@story.Id @story.Name</li>
+            <li>
+                <span class="story-id">#@story.Id</span>
+                <div>
+                    <span>@story.Name</span>
+                    <span class="tags">Tag 1, Tag 2</span>
+                </div>
+            </li>
         }
-    </ul>
+    </ol>
 }
 else
 {
