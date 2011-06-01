@@ -77,8 +77,10 @@ header
 
 .content-holder
 {
-    padding: 1em;
+    padding: 15px;
 }
+
+h2 { margin-top: 0; }
 
 .field-validation-error
 {
