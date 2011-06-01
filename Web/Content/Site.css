@@ -178,12 +178,12 @@ ol.backlog
             cursor: move;
         }
 
-        ol.backlog li.story-color-WHITE .story-id  { background-color: #f9f9f9; }
-        ol.backlog li.story-color-YELLOW .story-id { background-color: #fff1b9; }
-        ol.backlog li.story-color-ORANGE .story-id { background-color: #ffc68c; }
-        ol.backlog li.story-color-RED .story-id    { background-color: #ffc4b9; }
-        ol.backlog li.story-color-GREEN .story-id  { background-color: #dbffb7; }
-        ol.backlog li.story-color-BLUE .story-id   { background-color: #c6d7e8; }
+        ol.backlog li.story-color-white .story-id  { background-color: #f9f9f9; }
+        ol.backlog li.story-color-yellow .story-id { background-color: #fff1b9; }
+        ol.backlog li.story-color-orange .story-id { background-color: #ffc68c; }
+        ol.backlog li.story-color-red .story-id    { background-color: #ffc4b9; }
+        ol.backlog li.story-color-green .story-id  { background-color: #dbffb7; }
+        ol.backlog li.story-color-blue .story-id   { background-color: #c6d7e8; }
 
         ol.backlog li .estimated-effort
         {
