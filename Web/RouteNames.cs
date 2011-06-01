@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Librarian.Web
+﻿namespace Librarian.Web
 {
     public static class RouteNames
     {
@@ -9,5 +7,6 @@ namespace Librarian.Web
         public const string Logout = "logout";
         public const string ListProjects = "list-projects";
         public const string Backlog = "backlog";
+        public const string StorySetColor = "story-set-color";
     }
 }

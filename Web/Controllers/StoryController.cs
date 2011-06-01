@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Net;
+using System.Web.Mvc;
 using Librarian.Logic.TinyPM;
 
 namespace Librarian.Web.Controllers
@@ -17,6 +18,13 @@ namespace Librarian.Web.Controllers
         {
             var backlog = apiClient.GetBacklog(projectId);
             return View(backlog);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult SetColor(int storyId, string color)
+        {
+            return new HttpStatusCodeResult((int) HttpStatusCode.OK);
         }
     }
 }

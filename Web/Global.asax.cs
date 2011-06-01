@@ -28,6 +28,9 @@ namespace Librarian.Web
             routes.MapRoute(RouteNames.Backlog,
                 "projects/{projectId}/backlog",
                 new { controller = "Story", action = "Backlog" });
+            routes.MapRoute(RouteNames.StorySetColor,
+                "projects/{projectId}/backlog/{storyId}/set-color",
+                new { controller = "Story", action = "SetColor" });
         }
 
         protected void Application_Start()
