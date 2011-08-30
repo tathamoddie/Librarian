@@ -27,5 +27,13 @@ namespace Librarian.Web.Controllers
             apiClient.SetUserStoryColor(storyId, color);
             return new HttpStatusCodeResult((int) HttpStatusCode.OK);
         }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult SetPosition(int storyId, int position)
+        {
+            apiClient.SetUserStoryPosition(storyId, position);
+            return new HttpStatusCodeResult((int)HttpStatusCode.OK);
+        }
     }
 }

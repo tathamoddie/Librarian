@@ -85,6 +85,16 @@ namespace Librarian.Logic.TinyPM
                 });
         }
 
+        public void SetUserStoryPosition(int storyId, int position)
+        {
+            ExecutePut(
+                string.Format("userstory/{0}", storyId),
+                x =>
+                {
+                    x.Element("position").Value = position.ToString();
+                });
+        }
+
         UserStory GetUserStory(int userStoryId)
         {
             return ExecuteRequest(

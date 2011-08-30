@@ -8,5 +8,6 @@
         public const string ListProjects = "list-projects";
         public const string Backlog = "backlog";
         public const string StorySetColor = "story-set-color";
+        public const string StorySetPosition = "story-set-position";
     }
 }

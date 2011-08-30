@@ -31,6 +31,9 @@ namespace Librarian.Web
             routes.MapRoute(RouteNames.StorySetColor,
                 "projects/{projectId}/backlog/{storyId}/set-color",
                 new { controller = "Story", action = "SetColor" });
+            routes.MapRoute(RouteNames.StorySetPosition,
+                "projects/{projectId}/backlog/{storyId}/set-position",
+                new { controller = "Story", action = "SetPosition" });
         }
 
         protected void Application_Start()
